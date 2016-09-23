@@ -45,3 +45,45 @@ True || False = True
 False || True = True
 False || False = False
 
+-- 5 Without using any other library functions or operators, 
+--   show how the meaning of th following pattern matching definition
+--   for the logical conjunction && can be formalized using conditional expressions
+
+-- True && True = True
+-- _    && _    = False
+
+(&&) :: Bool -> Bool -> Bool
+(&&) x y =
+    if x == True then
+        if y == True then True
+        else False
+    else False
+
+-- 6 Do the same for te following alternative definition, and note the difference
+--   in the number of conditional expressions that are required
+-- True  && b = b
+-- False && _ = False
+
+(<&&>) :: Bool -> Bool -> Bool
+(<&&>) x y =
+    if x == True then y
+    else False
+
+-- 7 Show how the following curried function definition can be formalized
+--   in terms of lanbda expressions
+-- mult :: Int -> Int -> Int -> Int
+-- mult z y z = x * x * z
+mult :: Int -> (Int -> (Int -> Int))
+mult = \x -> (\y -> (\z -> x * y * z))
+
+-- 8 
+luhnDouble :: Int -> Int
+luhnDouble x = if dbl <= 9 then dbl else dbl - 9
+    where dbl = x * 2
+
+luhn :: Int -> Int -> Int -> Int -> Bool
+luhn a b c d = total `mod` 10 == 0
+    where 
+        total = sum [(luhnDouble a), b,(luhnDouble c), d]
+
+ 
