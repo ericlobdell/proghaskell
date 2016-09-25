@@ -28,6 +28,12 @@ sorted xs = and [x <= y | (x,y) <- pairs xs]
 
 -- Exercises
 
+-- 1. Using a list comprehension, giv an expression that calculates the sum of 1^2, 2^2, 3^2...100^2 it the first 100 integer aquares
 
+sq100 :: Int
+sq100 = sum [ x^2 | x <- [1..100] ]
+
+grid :: Int -> Int -> [(Int, Int)]
+grid m n = [(x, y) | x <- [0..m], y <- [0..n]]
 
 
