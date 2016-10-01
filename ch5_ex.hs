@@ -66,3 +66,20 @@ pyths n = [(x,y,z) | x <- [1..n], y <- [1..n], z <- [1..n], x^2 + y^2 == z^2]
 
 perfects :: Int -> [Int]
 perfects n = [x | x <- [1..n], sum (factors x) - x == x ]
+
+-- 7 Show how the list comprehension [(x,y) | x <- [1,2], y <- [3,4]] with 
+--   two generators can be reexpressed using two comprehensions with single 
+--   generators. Hint: nest one of the comprehensions within the other and use 
+--   the library function concat :: [[a]] -> [a]
+
+nested :: [(Int, Int)]
+nested = [x | x <- concat [[(1,3), (1,4)], [(2,3),(2,4)]]] -- hack?
+
+-- 8 Redefine the function positions using find
+
+
+-- 9 The scalar product of two lists of ntegers xs and ys is given by 
+--   the sum of the products of the corresponding integers (x1*y1) 
+
+scalarproduct :: [Int] -> [Int] -> Int
+scalarproduct xs ys = sum [x * y | (x,y) <- zip xs ys]
