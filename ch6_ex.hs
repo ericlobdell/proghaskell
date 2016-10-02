@@ -87,8 +87,38 @@ euclid x y | x == y = x
                     (larger, smaller) = if x > y then (x,y) else (y,x)
 
 
+-- 6 Define the following library functions on lists using recursion
 
+and' :: [Bool] -> Bool
+and' [] = True
+and' (False:_) = False
+and' (_:bs) = and' bs
 
+concat' :: [[a]] -> [a]
+concat' [] = []
+concat' (xs:xss) = xs ++ concat' xss
 
+replicate' :: Int -> a -> [a]
+replicate' 0 _ = []
+replicate' 1 x = [x]
+replicate' n x = x : replicate' (n - 1) x
 
+(!!=) :: [a] -> Int -> a
+(!!=) (x:xs) 1 = x
+(!!=) (x:xs) n = xs !!= (n-1)
+
+elem' :: Eq a => a -> [a] -> Bool
+elem' _ [] = False
+elem' y (x:xs) | x == y = True
+               | otherwise = elem' y xs
+
+-- 7 Define a recursive function merge :: Ord a => [a] -> [a] -> [a]
+--   that merges two sorted lists to give a single sorted lists
+
+merge :: Ord a => [a] -> [a] -> [a]
+merge [] [] = []
+merge [] ys = ys 
+merge xs [] = xs
+merge (x:xs) (y:ys) | x <= y = x : merge xs (y:ys)
+                    | otherwise = y : merge (x:xs) ys
 
