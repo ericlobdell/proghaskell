@@ -1,5 +1,7 @@
 -- NOTES
 
+import ch2_ex
+
 fac :: Int -> Int
 fac n = product [1..n]
 
@@ -113,12 +115,17 @@ elem' y (x:xs) | x == y = True
                | otherwise = elem' y xs
 
 -- 7 Define a recursive function merge :: Ord a => [a] -> [a] -> [a]
---   that merges two sorted lists to give a single sorted lists
+--   that merges two sorted lists to give a single sorted list
 
 merge :: Ord a => [a] -> [a] -> [a]
 merge [] [] = []
-merge [] ys = ys 
+merge [] ys = ys
 merge xs [] = xs
 merge (x:xs) (y:ys) | x <= y = x : merge xs (y:ys)
                     | otherwise = y : merge (x:xs) ys
+
+-- 8 Using merge, define a function msort :: Ord a => [a] -> [a] that 
+--   implements merge sort, in which the empty list and singleton lists 
+--   are already sorted, and any other list is sorted by merging together 
+--   the two lists that result from sorting the two halves of thw list seperately
 

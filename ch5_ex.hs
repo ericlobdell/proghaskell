@@ -25,10 +25,9 @@ pairs xs = zip xs (tail xs)
 sorted :: Ord a => [a] -> Bool
 sorted xs = and [x <= y | (x,y) <- pairs xs]
 
-
 -- Exercises
 
--- 1. Using a list comprehension, giv an expression that calculates the sum of 1^2, 2^2, 3^2...100^2 it the first 100 integer aquares
+-- 1. Using a list comprehension, give an expression that calculates the sum of 1^2, 2^2, 3^2...100^2 it the first 100 integer aquares
 
 sq100 :: Int
 sq100 = sum [ x^2 | x <- [1..100] ]
@@ -43,7 +42,7 @@ grid m n = [(x, y) | x <- [0..m], y <- [0..n]]
 --   square :: Int -> [(Int,Int)] that returns a coordinate square of size n,
 --   excluding the diagonal (0,0) to (n,n).  
 square :: Int -> [(Int, Int)]
-square n = [(x,y) | (x,y) <- grid n n, x /= y ]
+square n = [ (x,y) | (x,y) <- grid n n, x /= y ]
 
 -- 4 In a similar way top the function length, show how the library function 
 --   replicate :: Int -> a -> [a] that produces a list of identical elements
