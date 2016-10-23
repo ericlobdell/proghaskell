@@ -1,3 +1,5 @@
+module Ch7 where
+
 import Data.List
 
 count :: Eq a => a -> [a] -> Int
