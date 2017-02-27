@@ -15,13 +15,13 @@ sgetLine = do x <- getCh
                   do putChar x
                      return []
               else
-                  do putChar '-'
+                  do putChar '-' 
                      xs <- sgetLine
                      return (x:xs)
 
-getCh :: IO Char
+getCh :: IO Char 
 getCh = do hSetEcho stdin False
-           x <- getChar
+           x <- getChar 
            hSetEcho stdin True
            return x
 
