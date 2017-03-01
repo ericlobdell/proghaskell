@@ -33,7 +33,6 @@ putBoard [a,b,c,d,e] = do putRow 1 a
 
 getDigit :: String -> IO Int
 getDigit prompt = do putStr prompt
-                     newline
                      x <- getChar
                      if isDigit x then
                         return (digitToInt x)
